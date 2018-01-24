@@ -1,1 +1,0 @@
-cmd_/nfsroot/keyint/modules/keyint.ko := arm-linux-ld -EL -r  -T /forlinux/linux-3.0.1/scripts/module-common.lds --build-id  -o /nfsroot/keyint/modules/keyint.ko /nfsroot/keyint/modules/keyint.o /nfsroot/keyint/modules/keyint.mod.o

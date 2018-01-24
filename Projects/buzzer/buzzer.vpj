@@ -263,24 +263,24 @@
 		<Folder
 			Name="Source Files"
 			Filters="*.c;*.C;*.cc;*.cpp;*.cp;*.cxx;*.c++;*.prg;*.pas;*.dpr;*.asm;*.s;*.bas;*.java;*.cs;*.sc;*.e;*.cob;*.html;*.rc;*.tcl;*.py;*.pl;*.d;*.m;*.mm;*.go;*.groovy;*.gsh"
-			GUID="{B964BBC3-27EE-4153-84A1-409953DA36E9}">
+			GUID="{6F1E7118-4444-4DAE-A323-F9F8DE831351}">
 			<F N="buzzer.c"/>
 		</Folder>
 		<Folder
 			Name="Header Files"
 			Filters="*.h;*.H;*.hh;*.hpp;*.hxx;*.h++;*.inc;*.sh;*.cpy;*.if"
-			GUID="{7122FFDA-CDF5-4DB6-88ED-57361CB18253}"/>
+			GUID="{9634568E-9B08-4BE6-8738-6F9FA4E87483}"/>
 		<Folder
 			Name="Resource Files"
 			Filters="*.ico;*.cur;*.dlg"
-			GUID="{4701D441-533D-4558-8C58-E90FE7A76B94}"/>
+			GUID="{13FA936E-29F8-40A1-B620-B160BAFDAA52}"/>
 		<Folder
 			Name="Bitmaps"
 			Filters="*.bmp"
-			GUID="{11EAF790-F3FC-4DE7-B56B-2478CC8A2710}"/>
+			GUID="{EB22D4A5-EF51-4725-AF56-2A672B6A6C13}"/>
 		<Folder
 			Name="Other Files"
 			Filters=""
-			GUID="{BBAB2E8D-F162-4603-8836-812CC44A3676}"/>
+			GUID="{56A0AC40-ED55-426F-84F6-BC2BF5ED7318}"/>
 	</Files>
 </Project>
