@@ -1,0 +1,1 @@
+cmd_/root/ok6410/Projects/pwm_button/forlinx6410_pwm.ko := arm-linux-ld -EL -r  -T /usr/src/kernels/linux-3.0.1/scripts/module-common.lds --build-id  -o /root/ok6410/Projects/pwm_button/forlinx6410_pwm.ko /root/ok6410/Projects/pwm_button/forlinx6410_pwm.o /root/ok6410/Projects/pwm_button/forlinx6410_pwm.mod.o

@@ -1,0 +1,1 @@
+cmd_/root/ok6410/Projects/buzzer/buzzer.ko := arm-linux-ld -EL -r  -T /usr/src/kernels/linux-3.0.1/scripts/module-common.lds --build-id  -o /root/ok6410/Projects/buzzer/buzzer.ko /root/ok6410/Projects/buzzer/buzzer.o /root/ok6410/Projects/buzzer/buzzer.mod.o

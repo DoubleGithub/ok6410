@@ -265,6 +265,7 @@
 			Filters="*.c;*.C;*.cc;*.cpp;*.cp;*.cxx;*.c++;*.prg;*.pas;*.dpr;*.asm;*.s;*.bas;*.java;*.cs;*.sc;*.e;*.cob;*.html;*.rc;*.tcl;*.py;*.pl;*.d;*.m;*.mm;*.go;*.groovy;*.gsh"
 			GUID="{6F1E7118-4444-4DAE-A323-F9F8DE831351}">
 			<F N="buzzer.c"/>
+			<F N="../forlinx6410_pwm.c"/>
 		</Folder>
 		<Folder
 			Name="Header Files"

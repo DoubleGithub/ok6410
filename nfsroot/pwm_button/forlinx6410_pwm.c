@@ -28,15 +28,16 @@
 
 #define DEVICE_NAME     "pwm"
 
-#define PWM_IOCTL_SET_FREQ		1
-#define PWM_IOCTL_STOP			0
+#define PWM_IOCTL_SET_FREQ		1   //蜂鸣器设置频率指令
+#define PWM_IOCTL_STOP			0   //蜂鸣器关闭指令
 
-static struct semaphore lock;
+static struct semaphore lock;   //定义一个信号量
 
-/* freq:  pclk/50/16/65536 ~ pclk/50/16 
-  * if pclk = 50MHz, freq is 1Hz to 62500Hz
-  * human ear : 20Hz~ 20000Hz
-  */
+/* 
+	freq:  pclk/50/16/65536 ~ pclk/50/16 
+	if pclk = 50MHz, freq is 1Hz to 62500Hz
+	human ear : 20Hz~ 20000Hz
+*/
 static void PWM_Set_Freq( unsigned long freq )
 {
 	unsigned long tcon;
@@ -49,10 +50,28 @@ static void PWM_Set_Freq( unsigned long freq )
 
 	unsigned tmp;
 
-        printk ("Freq is %d",freq);
+        printk ("Freq is %ld\n",freq);
 
 	tmp = readl(S3C64XX_GPFCON);//PWM out use GPF15 here
-
+	/*
+	在设备的物理地址被映射到虚拟地址之后，尽管可以直接通过指针访问这些地址，但是宜使用Linux内核的如下一组函数来完成访问I/O内存：
+	·读I/O内存
+    unsigned int ioread8(void *addr);
+    unsigned int ioread16(void *addr);
+    unsigned int ioread32(void *addr);
+    与上述函数对应的较早版本的函数为（这些函数在Linux 2.6中仍然被支持）：
+    unsigned readb(address);
+    unsigned readw(address);
+    unsigned readl(address);
+    ·写I/O内存
+    void iowrite8(u8 value, void *addr);
+    void iowrite16(u16 value, void *addr);
+    void iowrite32(u32 value, void *addr);
+    与上述函数对应的较早版本的函数为（这些函数在Linux 2.6中仍然被支持）：
+    void writeb(unsigned value, address);
+    void writew(unsigned value, address);
+    void writel(unsigned value, address);
+    */
          tmp &=~(0x3U << 30);//  No use Timer0,use Timer1 here
          tmp |=  (0x2U << 30);
 
@@ -120,9 +139,10 @@ static int s3c64xx_pwm_close(struct inode *inode, struct file *file)
 
 static long s3c64xx_pwm_ioctl(struct file *filep, unsigned int cmd, unsigned long arg)
 {
-	switch (cmd) {
+	switch (cmd) 
+	{
 		case PWM_IOCTL_SET_FREQ:
-			if (arg == 0)
+			if (arg == 0)			//？？？？？
 				return -EINVAL;
 			PWM_Set_Freq(arg);
 			break;
@@ -138,12 +158,12 @@ static long s3c64xx_pwm_ioctl(struct file *filep, unsigned int cmd, unsigned lon
 
 
 static struct file_operations dev_fops = {
-    .owner			= THIS_MODULE,
+    .owner			= THIS_MODULE,			//C99式定义
     .open			= s3c64xx_pwm_open,
     .release		= s3c64xx_pwm_close, 
     .unlocked_ioctl	= s3c64xx_pwm_ioctl,
 };
-
+//杂项设备结构体定义
 static struct miscdevice misc = {
 	.minor = MISC_DYNAMIC_MINOR,
 	.name = DEVICE_NAME,
@@ -154,8 +174,8 @@ static int __init dev_init(void)
 {
 	int ret;
 
-	init_MUTEX(&lock);
-	ret = misc_register(&misc);
+	init_MUTEX(&lock);      //信号量lock初始化为1
+	ret = misc_register(&misc);		//注册为杂项设备
 
 	printk (DEVICE_NAME"\tinitialized\n");
     	return ret;
